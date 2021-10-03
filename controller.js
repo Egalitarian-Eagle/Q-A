@@ -1,0 +1,61 @@
+const {model}=require('./model.js')
+
+module.exports.controller={
+  getQA:(req,res)=>{
+    const id=req.query.product_id;
+    model.getQA(id,(err,data)=>{
+      if(err){
+        res.sendStatus(404);
+      }else{
+        res.send(data);
+      }
+    })
+  },
+  postA:(req,res)=>{
+    const answer=req.body;
+    model.postA(answer,(err,data)=>{
+      if(err){
+        res.sendStatus(404);
+      }else{
+        res.sendStatus(201);
+      }
+    })
+  },
+  postQ:(req,res)=>{
+    const question=req.body;
+    model.postQ(question,(err,data)=>{
+      if(err){
+        res.sendStatus(404);
+      }else{
+        res.sendStatus(201);
+      }
+    })
+  },
+  reportQ:(req,res)=>{
+    model.reportQ(req.body,(err,data)=>{
+      if(err){
+        res.sendStatus(404);
+      }else{
+        res.sendStatus(201);
+      }
+    })
+  },
+  helpfulQ:(req,res)=>{
+    model.helpfulQ(req.body,(err,data)=>{
+      if(err){
+        res.sendStatus(404);
+      }else{
+        res.sendStatus(201);
+      }
+    })
+  },
+  helpfulA:(req,res)=>{
+    model.helpfulA(req.body,(err,data)=>{
+      if(err){
+        res.sendStatus(404);
+      }else{
+        res.sendStatus(201);
+      }
+    })
+  }
+}

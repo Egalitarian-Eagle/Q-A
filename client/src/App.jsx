@@ -131,7 +131,7 @@ const App = () => {
           <br />
           <div className='QandA'>
             <QAwidget
-                product_id={productId}
+                product_id={1}
               />
           </div>
           <br />

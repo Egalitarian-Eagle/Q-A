@@ -34,27 +34,28 @@ const addAnswerStyle =  {
 
 const Question = ({ question }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [QHelpfulness, setQHelpfulness] = useState(question.question_helpfulness);
+  const [QHelpfulness, setQHelpfulness] = useState(question.helpful);
   const [answerCounter, setAnswserCounter] = useState(2)
 
-  const answerKey = Object.keys(question.answers);
-  const answerList = answerKey.map(key => question.answers[key]);
+  // const answerKey = Object.keys(question.answers);
+  // const answerList = answerKey.map(key => question.answers[key]);
+  const answerList=question.answers;
 
   return (
     <div role="question-obj" className={question}>
       <QContainer>
         <QuestionHelpful
-          questionId={question.question_id}
+          questionId={question.id}
           helpfulness={QHelpfulness}
         />
         <button style={addAnswerStyle} onClick={() => setIsModalOpen(true)}>add answer</button>
       </QContainer>
       <h3>
-        Q: {question.question_body}
+        Q: {question.body}
       </h3>
       <div className="answer-list" data-testid="answer-list">
         {answerList
-          .sort((a, b) => (b.helpfulness - a.helpfulness))
+          .sort((a, b) => (b.helpful - a.helpful))
           .slice(0, answerCounter)
           .map(answer => (
             <Answer
@@ -84,7 +85,7 @@ const Question = ({ question }) => {
       {isModalOpen && (
         <Modal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}>
           <AddAnswerModal
-            questionId={question.question_id}
+            questionId={question.id}
             isPopup={isModalOpen}
             onClose={() => {setIsModalOpen(false)}}
           />
