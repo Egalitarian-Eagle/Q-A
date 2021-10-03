@@ -35,8 +35,9 @@ const QAwidget = ( { product_id } ) => {
   useEffect(() => {
     axios.get(`/qa/questions?product_id=${product_id}&page=1&count=99`)
       .then((response) => {
-        setQuestions(response.data.results.sort((a, b) => (a.helpness - b.helpness)))
-        setQuestionsToView(response.data.results.sort((a, b) => (a.helpness - b.helpness)))
+        console.log(response.data)
+        setQuestions(response.data.sort((a, b) => (a.helpful - b.helpful)))
+        setQuestionsToView(response.data.sort((a, b) => (a.helpful - b.helpful)))
       })
       .catch(console.log)
   }, [product_id])
@@ -56,7 +57,7 @@ const QAwidget = ( { product_id } ) => {
   const filterQList = (searchInput) => {
     if (searchInput) {
       const newQlist = questions.filter( qObj => {
-        if (qObj.question_body.toLowerCase().includes(searchInput.toLowerCase())) {
+        if (qObj.body.toLowerCase().includes(searchInput.toLowerCase())) {
           return qObj
         };
       });

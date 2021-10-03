@@ -59,16 +59,17 @@ const AddAnswerModal = ({ isPopup, onClose, questionId }) => {
     const photolinks = photoUrl.split(',').map(link => link.trim()) || []
     if (validationCheck()) {
       const newAnswer = {
+        question_id: questionId,
         body: answerBody,
         name: nickname,
         email: email,
         photos: photolinks
       };
       axios.post(`/qa/questions/${questionId}/answers`, newAnswer)
-      .then((res) => {
-        console.log('new answer was sent to API:', res.data)
-      })
-      .catch(console.log)
+        .then((res) => {
+          console.log('new answer was sent to API:', res.data)
+        })
+        .catch(console.log)
       onClose();
     }
   }
@@ -93,7 +94,7 @@ const AddAnswerModal = ({ isPopup, onClose, questionId }) => {
   return (
     <div>
       <div className="add-answer-modal">
-        <h1 className="form-header" style={{textAlign: "center"}}>
+        <h1 className="form-header" style={{ textAlign: "center" }}>
           submit your answer
         </h1>
         <form
@@ -115,22 +116,22 @@ const AddAnswerModal = ({ isPopup, onClose, questionId }) => {
             <strong>Your Nickname</strong><span className="req-star">*</span>
           </SmallHeader>
           <Input
-              className="nickname-body"
-              type="text"
-              vlaue={nickname}
-              placeholder="Example:jackson11!"
-              onChange={(e) => {setNickname(e.target.value)}}
-            />
+            className="nickname-body"
+            type="text"
+            vlaue={nickname}
+            placeholder="Example:jackson11!"
+            onChange={(e) => { setNickname(e.target.value) }}
+          />
           <SmallHeader className="email-text">
             <strong>Your Email</strong><span className="req-star">*</span>
           </SmallHeader>
           <Input
-              className="email-body"
-              type="text"
-              vlaue={email}
-              placeholder="Why did you like the product or not"
-              onChange={(e) => {setEmail(e.target.value)}}
-            />
+            className="email-body"
+            type="text"
+            vlaue={email}
+            placeholder="Why did you like the product or not"
+            onChange={(e) => { setEmail(e.target.value) }}
+          />
           <SmallHeader className="photo-text">
             <strong>Your Photos</strong>
           </SmallHeader>

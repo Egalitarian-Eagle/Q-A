@@ -4,46 +4,50 @@ mongoose.connect('mongodb://localhost/sdc', { useNewUrlParser: true, useUnifiedT
 const { Schema, model } = mongoose;
 
 
-const PhotoSchema = new Schema({
-  photos_id: Number,
-  url: String
-})
-
-const Photo=model('Photo',PhotoSchema);
-
 const AnswerSchema = new Schema({
   id: Number,
+  question_id: Number,
   body: String,
-  date: String,
+  date_written: Number,
   answerer_name: String,
-  helpfulness: Number,
-  photos: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Photo',
-  }
+  answerer_email: String,
+  reported: {
+    type: Number,
+    default: 0
+  },
+  helpful: {
+    type: Number,
+    default: 0
+  },
+  photos:[String]
 
 })
-const Answer=model('Answer',AnswerSchema);
+const Answer = model('Answer', AnswerSchema);
+
+
+// answer: id, question_id, body, date_written, answerer_name, answerer_email, reported, helpful
+// question: id, product_id, body, date_written, asker_name, asker_email, reported, helpful
+// photos: id, answer_id, url
+
 
 const QuestionSchema = new Schema({
+  id: Number,
   product_id: Number,
-  results: [{
-    question_id: Number,
-    question_body: String,
-    question_date: String,
-    asker_name: String,
-    question_helpfulness: {
-      type:Number,
-      default:0
-    }
-    reported: Boolean,
-    answers: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Answer',
-    }
+  body: String,
+  date_written: Number,
+  asker_name: String,
+  asker_email: String,
+  reported: {
+    type: Number,
+    default: 0
+  },
+  helpful: {
+    type: Number,
+    default: 0
+  },
+  answers:[AnswerSchema]
 });
 
 const Question = mongoose.model('Question', QuestionSchema);
 
-
-module.exports={Answer,Photo,Question};
+module.exports = { Answer, Question };

@@ -20,12 +20,12 @@ const AContainer = styled.div`
 `;
 
 const Answer = ({ answerObj }) => {
-  const [aHelpfulness, setAHelpfulness] = useState(answerObj.helpfulness);
+  const [aHelpfulness, setAHelpfulness] = useState(answerObj.helpful);
   const [helpfulSubmit, setHelpfulSubmit] = useState(false);
 
   const handAHelpfulClick = (e) => {
     if (!helpfulSubmit) {
-      axios.put(`/qa/answers/${answerObj.id}/helpful`)
+      axios.put(`/qa/answers/${answerObj.id}/helpful`,{helpful:aHelpfulness,answer_id:answerObj.id})
       .then(setAHelpfulness(aHelpfulness + 1))
       .catch(console.log)
     }
@@ -38,7 +38,7 @@ const Answer = ({ answerObj }) => {
         <strong>A: </strong>{answerObj.body}
       </h4>
       <AContainer>
-      <span >by {answerObj.answerer_name},  {moment(answerObj.date).utc().format('MMMM D, YYYY')} <span> | </span></span>
+      <span >by {answerObj.answerer_name},  {moment(answerObj.date_written).utc().format('MMMM D, YYYY')} <span> | </span></span>
       <span> helpful? </span>
       {helpfulSubmit
         ? <span className="answer-helpfulness" style={afterClickedStyle} onClick={handAHelpfulClick}> yes({aHelpfulness})</span>
