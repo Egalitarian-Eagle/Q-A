@@ -21,7 +21,6 @@ const axiosConfig = {
   }
 };
 
-app.get('/qa/questions', controller.getQA);
 app.get('/*', (req, res) => {
   if (req.url.startsWith('/qa/questions')) {
     controller.getQA(req, res);
@@ -46,7 +45,8 @@ app.post('/*', (req, res) => {
   } else{
     axios.post(`${API_URL}${req.url}`, req.body, axiosConfig)
     .then((response) => {
-      res.send(response.status);
+      // res.send(response.status);
+      res.send('send')
     })
     .catch((error) => {
       res.send(`Error making POST request: ${error}`);
