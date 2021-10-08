@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/sdc', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect('mongodb://18.116.42.253:27017/sdc', { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('connected'), err => console.log('err'));
 const { Schema, model } = mongoose;
-
+//18.116.42.253:27017
 
 const AnswerSchema = new Schema({
   id: Number,
@@ -49,5 +49,6 @@ const QuestionSchema = new Schema({
 });
 
 const Question = mongoose.model('Question', QuestionSchema);
+
 
 module.exports = { Answer, Question };

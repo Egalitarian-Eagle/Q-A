@@ -15,7 +15,7 @@ const importData = () => {
   //   }
   // });
   mongoose.connect('mongodb://localhost/sdc', async (err, db) => {
-    // await db.collection('answers').createIndex({ id: 1 }, { unique: true });
+    // await db.collection('answers').  , { unique: true });
     // await db.collection('photos').createIndex({ answers_id: 1 });
     // await db.collection('questions').createIndex({ product_id: 1 });
     // await db.collection('answers').find().forEach((answer) => {
