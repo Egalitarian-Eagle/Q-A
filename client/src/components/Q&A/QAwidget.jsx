@@ -35,7 +35,6 @@ const QAwidget = ( { product_id } ) => {
   useEffect(() => {
     axios.get(`/qa/questions?product_id=${product_id}&page=1&count=99`)
       .then((response) => {
-        console.log(response.data)
         setQuestions(response.data.sort((a, b) => (a.helpful - b.helpful)))
         setQuestionsToView(response.data.sort((a, b) => (a.helpful - b.helpful)))
       })

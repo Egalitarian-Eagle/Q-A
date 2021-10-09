@@ -24,6 +24,8 @@ const axiosConfig = {
 app.get('/*', (req, res) => {
   if (req.url.startsWith('/qa/questions')) {
     controller.getQA(req, res);
+  } else if (req.url === '/loaderio-2282b16b3da5f828e23d021a99c6cb5b') {
+    res.send('loaderio-2282b16b3da5f828e23d021a99c6cb5b');
   } else {
     axios.get(`${API_URL}${req.url}`, axiosConfig)
       .then((response) => {
@@ -37,39 +39,39 @@ app.get('/*', (req, res) => {
 });
 
 app.post('/*', (req, res) => {
-  if(req.url==='/qa/questions'){
-    controller.postQ(req,res);
+  if (req.url === '/qa/questions') {
+    controller.postQ(req, res);
   }
   else if (req.url.startsWith('/qa/questions')) {
     controller.postA(req, res);
-  } else{
+  } else {
     axios.post(`${API_URL}${req.url}`, req.body, axiosConfig)
-    .then((response) => {
-      // res.send(response.status);
-      res.send('send')
-    })
-    .catch((error) => {
-      res.send(`Error making POST request: ${error}`);
-    });
+      .then((response) => {
+        // res.send(response.status);
+        res.send('send')
+      })
+      .catch((error) => {
+        res.send(`Error making POST request: ${error}`);
+      });
   }
 
 });
 
 app.put('/*', (req, res) => {
-  if(req.url.startsWith('/qa/questions') && req.url.endsWith('report')){
-    controller.reportQ(req,res);
-  }else if(req.url.startsWith('/qa/questions') && req.url.endsWith('helpful')){
-    controller.helpfulQ(req,res);
-  }else if(req.url.startsWith('/qa/answers')){
-    controller.helpfulA(req,res);
-  }else{
+  if (req.url.startsWith('/qa/questions') && req.url.endsWith('report')) {
+    controller.reportQ(req, res);
+  } else if (req.url.startsWith('/qa/questions') && req.url.endsWith('helpful')) {
+    controller.helpfulQ(req, res);
+  } else if (req.url.startsWith('/qa/answers')) {
+    controller.helpfulA(req, res);
+  } else {
     axios.put(`${API_URL}${req.url}`, {}, axiosConfig)
-    .then((response) => {
-      res.send(response.status);
-    })
-    .catch((error) => {
-      res.send(`Error making PUT request: ${error}`);
-    });
+      .then((response) => {
+        res.send(response.status);
+      })
+      .catch((error) => {
+        res.send(`Error making PUT request: ${error}`);
+      });
   }
 
 });

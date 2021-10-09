@@ -11,7 +11,7 @@ export let options = {
 };
 export default function () {
   const obj = {
-    "question_id": "100",
+    "question_id": 100,
     "body": "I've thrown it in the wash and it seems fine",
     "name": "hello",
     "email": "first.last@gmail.com",

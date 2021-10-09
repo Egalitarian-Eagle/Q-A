@@ -10,7 +10,7 @@ export let options = {
 };
 export default function () {
   const obj = {
-    "product_id": "123123",
+    "product_id": 123123,
     "body": "I've thrown it in the wash and it seems fine",
     "name": "hello",
     "email": "0000"

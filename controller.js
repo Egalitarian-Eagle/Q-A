@@ -36,7 +36,7 @@ module.exports.controller={
       if(err){
         res.sendStatus(404);
       }else{
-        res.sendStatus(201);
+        res.sendStatus(204);
       }
     })
   },
@@ -45,7 +45,7 @@ module.exports.controller={
       if(err){
         res.sendStatus(404);
       }else{
-        res.sendStatus(201);
+        res.sendStatus(204);
       }
     })
   },
@@ -54,7 +54,7 @@ module.exports.controller={
       if(err){
         res.sendStatus(404);
       }else{
-        res.sendStatus(201);
+        res.sendStatus(204);
       }
     })
   }
