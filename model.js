@@ -8,14 +8,13 @@ module.exports.model = {
       { '$match': { 'product_id': Number(id) } },
       {
         '$lookup': {
-          'from': 'answers',  
+          'from': 'answers',
           'localField': 'id',
           'foreignField': 'question_id',
           'as': 'answers'
         }
       }
     ]).exec((err, data) => {
-      console.log(data  )
       if (err) {
         console.log(err)
       } else {
@@ -39,7 +38,6 @@ module.exports.model = {
       if (err) {
         console.log(err)
       } else {
-        console.log(data)
         callback(err, data)
       }
     })
@@ -54,7 +52,7 @@ module.exports.model = {
     })
   },
   helpfulQ: (body, callback) => {
-    Question.updateOne({ id: body.question_id }, { helpful: body.helpful + 1 }, (err, data) => {
+    Question.updateOne({ id: body.question_id }, { helpful: body.helpful}, (err, data) => {
       if (err) {
         console.log(err)
       } else {
@@ -63,7 +61,7 @@ module.exports.model = {
     })
   },
   helpfulA: (body, callback) => {
-    Answer.updateOne({ id: body.answer_id }, { helpful: body.helpful + 1 }, (err, data) => {
+    Answer.updateOne({ id: body.answer_id }, { helpful: body.helpful}, (err, data) => {
       if (err) {
         console.log(err)
       } else {

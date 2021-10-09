@@ -29,7 +29,7 @@ const QuestionHelpful = ({ helpfulness, questionId }) => {
 
   const handleQHelpfulnessClicked = (e) => {
     if (!isHelpful) {
-      axios.put(`/qa/questions/${questionId}/helpful`,{question_id:questionId,helpful:QHelpfulness})
+      axios.put(`/qa/questions/${questionId}/helpful`,{question_id:questionId,helpful:QHelpfulness+1})
       .then(setQHelpfulness(QHelpfulness + 1))
       .catch(console.log)
     }

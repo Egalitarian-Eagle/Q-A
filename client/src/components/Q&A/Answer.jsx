@@ -25,7 +25,7 @@ const Answer = ({ answerObj }) => {
 
   const handAHelpfulClick = (e) => {
     if (!helpfulSubmit) {
-      axios.put(`/qa/answers/${answerObj.id}/helpful`,{helpful:aHelpfulness,answer_id:answerObj.id})
+      axios.put(`/qa/answers/${answerObj.id}/helpful`,{helpful:aHelpfulness+1,answer_id:answerObj.id})
       .then(setAHelpfulness(aHelpfulness + 1))
       .catch(console.log)
     }
