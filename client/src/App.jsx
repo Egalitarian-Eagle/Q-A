@@ -110,19 +110,19 @@ const App = () => {
         </ScrollButton>
           <SharedContext.Provider value={{ productId, setProductId, currentOutfit, setCurrentOutfit, theme }}>
           <Navbar theme={theme} toggleTheme={toggleTheme} searchFunc={changeProdId}/>
-          <Overview product_id={productId}/>
+          {/* <Overview product_id={productId}/> */}
           <br />
           <br />
           <br />
           <h2 style={{ textAlign: 'center' }}>you might also like...</h2>
           <StyledDivider>{isDarkTheme? <StyledImg src='https://i.imgur.com/ZC0BXZY.png' /> : <StyledImg src='https://i.imgur.com/EqtyDcb.png' />}</StyledDivider>
-          <RelatedProducts />
+          {/* <RelatedProducts /> */}
           <br />
           <br />
           <br />
           <h2 style={{ textAlign: 'center' }}>your outfit</h2>
           <StyledDivider>{isDarkTheme? <StyledImg src='https://i.imgur.com/ZC0BXZY.png' /> : <StyledImg src='https://i.imgur.com/EqtyDcb.png' />}</StyledDivider>
-          <Outfit />
+          {/* <Outfit /> */}
           <br />
           <br />
           <br />
@@ -139,7 +139,7 @@ const App = () => {
           <br />
           <h2 style={{ textAlign: 'center' }}>reviews</h2>
           <StyledDivider>{isDarkTheme? <StyledImg src='https://i.imgur.com/ZC0BXZY.png' /> : <StyledImg src='https://i.imgur.com/EqtyDcb.png' />}</StyledDivider>
-          <RatingsAndReviews id={productId} />
+          {/* <RatingsAndReviews id={productId} /> */}
           <br />
           <br />
           <br />
